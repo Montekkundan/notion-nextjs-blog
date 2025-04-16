@@ -7,7 +7,7 @@ import { MDXContent } from './mdx-content';
 import { serialize } from 'next-mdx-remote/serialize';
 import remarkGfm from 'remark-gfm';
 
-export const revalidate = 10; // Revalidate every 10 seconds (for testing)
+export const revalidate = 3600; // Revalidate every 1 hour
 
 async function getPosts(locale: string) {
     try {
