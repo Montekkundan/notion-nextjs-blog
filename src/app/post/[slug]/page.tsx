@@ -29,17 +29,14 @@ export async function generateStaticParams(props: Props) {
 
 export async function generateMetadata(props: Props) {
   const params = await props.params;
-
-  const {
-    slug
-  } = params;
-
-
+  const { slug } = params;
   const post = await getSinglePost(decodeURIComponent(slug), 'en');
-
   if (!post) {
     return null;
   }
+
+  const ogImageUrl = `https://notion-nextjs-blog-delta.vercel.app/post/${encodeURIComponent(slug)}/opengraph-image`;
+  const pageUrl = `https://notion-nextjs-blog-delta.vercel.app/post/${encodeURIComponent(slug)}`;
 
   return {
     title: post.post.seoTitle,
@@ -47,10 +44,12 @@ export async function generateMetadata(props: Props) {
     openGraph: {
       title: post.post.seoTitle,
       description: post.post.metaDescription,
+      url: pageUrl,
       images: [
         {
+          url: ogImageUrl,
           alt: post.post.metaDescription,
-          type: 'image/webp',
+          type: 'image/png',
           width: 1200,
           height: 630,
         },
@@ -63,8 +62,9 @@ export async function generateMetadata(props: Props) {
       description: post.post.metaDescription,
       images: [
         {
+          url: ogImageUrl,
           alt: post.post.metaDescription,
-          type: 'image/webp',
+          type: 'image/png',
           width: 1200,
           height: 630,
         },
