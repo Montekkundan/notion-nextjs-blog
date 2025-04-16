@@ -11,10 +11,14 @@
   "dependencies": {
     "@next/mdx": "^15.2.4",
     "@notionhq/client": "^2.3.0",
+    "@radix-ui/react-switch": "^1.1.4",
     "@types/remark-abbr": "^1.4.4",
     "@vercel/analytics": "^1.5.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.488.0",
     "next": "15.2.4",
     "next-mdx-remote": "^5.0.0",
+    "next-themes": "^0.4.6",
     "notion-to-md": "^4.0.0-alpha.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -24,7 +28,8 @@
     "remark-directive": "^4.0.0",
     "remark-footnotes": "^5.0.0",
     "remark-gfm": "^4.0.1",
-    "sugar-high": "^0.9.3"
+    "sugar-high": "^0.9.3",
+    "tailwind-merge": "^3.2.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
