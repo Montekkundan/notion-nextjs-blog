@@ -74,7 +74,7 @@ export default function RootLayout({
       <body className="antialiased tracking-tight dark:bg-zinc-950 bg-white">
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
