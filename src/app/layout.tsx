@@ -79,6 +79,12 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="min-h-screen flex flex-col justify-between pt-0 md:pt-8 p-8 dark:bg-zinc-950 bg-white text-gray-900 dark:text-zinc-200">
+            {/* REMOVE THIS BUTTON AFTER DEPLOYMENT */}
+            <button className="fixed top-4 left-4 z-50">
+              <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMontekkundan%2Fnotion-nextjs-blog&env=NOTION_ACCESS_TOKEN,NOTION_POST_DATABASE_ID&envDescription=Set%20NOTION_ACCESS_TOKEN%20(your%20Notion%20integration%20API%20key)%20and%20NOTION_POST_DATABASE_ID%20(your%20Notion%20database%20ID)%3B%20see%20Notion%20API%20docs%20for%20details.&envLink=https%3A%2F%2Fdevelopers.notion.com%2Fdocs%2Fgetting-started">
+                <img src="https://vercel.com/button" alt="Deploy with Vercel" />
+              </a>
+            </button>
             <ThemeToggle />
             <main className="max-w-[60ch] mx-auto w-full space-y-6">
               {children}
