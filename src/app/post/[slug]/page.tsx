@@ -75,13 +75,25 @@ export async function generateMetadata(props: Props) {
 
 export const revalidate = 10; // Revalidate every 10 seconds (for testing)
 
-export default async function PostPage(props: Props) {
-  const params = await props.params;
-  
-  const { slug } = params;
-
+async function getPost(slug: string) {
   try {
     const post = await getSinglePost(decodeURIComponent(slug), 'en');
+    return post;
+  } catch (error) {
+    console.error('Error fetching post:', error);
+    return null;
+  }
+}
+
+export default async function PostPage(props: Props) {
+  const params = await props.params;
+  const { slug } = params;
+
+  // Preload post for fetch cache
+  void getPost(slug);
+
+  try {
+    const post = await getPost(slug);
     if (!post) return notFound();
     const { title } = await getHomePageContent().catch(() => ({
       title: undefined,
