@@ -28,7 +28,7 @@ export default async function Home() {
     if (!title || !markdown) {
         title = 'Montek Kundan';
         markdown = `
-        ### Welcome to my digital garden!
+        # Welcome to my digital garden!
 
         This is where I share my thoughts, projects, and explorations in technology, programming, and design.
       `.trim();
@@ -54,20 +54,20 @@ export default async function Home() {
                         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between">
                             <Link
                                 href={`/post/${post.slug}`}
-                                className="text-lg font-medium text-gray-800 dark:text-zinc-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                                className="text-lg font-medium text-gray-900 dark:text-zinc-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                                 prefetch={true}
                             >
                                 {post.title}
                             </Link>
                             <time
                                 dateTime={post.date}
-                                className="text-sm text-gray-500 dark:text-zinc-400 mt-1 sm:mt-0"
+                                className="text-sm text-gray-700 dark:text-zinc-300 mt-1 sm:mt-0"
                             >
                                 {readableDate(post.date)}
                             </time>
                         </div>
                         {post.description && (
-                            <p className="text-gray-600 dark:text-zinc-400 text-sm mt-1">{post.description}</p>
+                            <p className="text-gray-800 dark:text-zinc-200 text-sm mt-1">{post.description}</p>
                         )}
                     </li>
                 ))}
