@@ -1,28 +1,36 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useRef, useState, useEffect } from "react"
 import { flushSync } from "react-dom"
 import { Moon, Sun } from "lucide-react"
 import { Switch } from "@/components/ui/switch"
 import { cn } from "@/lib/utils"
+import { useTheme } from "next-themes"
 
 export function ThemeToggle() {
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const { resolvedTheme, setTheme } = useTheme()
+  const isDarkMode = resolvedTheme === "dark"
   const thumbRef = useRef<HTMLDivElement | null>(null)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const toggleDarkMode = async (checked: boolean) => {
+    const newTheme = checked ? "dark" : "light"
     if (
       !thumbRef.current ||
       !document.startViewTransition ||
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     ) {
-      setIsDarkMode(checked)
+      setTheme(newTheme)
       return
     }
 
     await document.startViewTransition(() => {
       flushSync(() => {
-        setIsDarkMode(checked)
+        setTheme(newTheme)
       })
     }).ready
 
@@ -45,13 +53,7 @@ export function ThemeToggle() {
     )
   }
 
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark")
-    } else {
-      document.documentElement.classList.remove("dark")
-    }
-  }, [isDarkMode])
+  if (!mounted) return null
 
   return (
     <div className="fixed top-4 right-4 z-50">
