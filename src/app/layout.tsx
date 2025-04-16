@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://montek.dev"),
+  metadataBase: new URL("https://notion-nextjs-blog-delta.vercel.app/"),
   alternates: {
     canonical: "/",
   },
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Montek Kundan",
     description: "Digital garden of Montek Kundan",
-    url: "https://montek.dev/",
+    url: "https://notion-nextjs-blog-delta.vercel.app/",
     siteName: "Montek Kundan",
     images: [
       {
