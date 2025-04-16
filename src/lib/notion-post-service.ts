@@ -1,9 +1,7 @@
 import { Metadata, Post } from "@/types/post";
-import { cache } from "react";
 import { getPageContent, notionClient } from "./notion-client";
 
-export const getPublishedPosts = cache(
-  async (locale: string): Promise<Metadata[]> => {
+export const getPublishedPosts = async (locale: string): Promise<Metadata[]> => {
     const databaseId = process.env.NOTION_POST_DATABASE_ID;
     if (!databaseId) {
       throw new Error('NOTION_POST_DATABASE_ID environment variable is not set');
@@ -37,11 +35,9 @@ export const getPublishedPosts = cache(
     return response.results.map((res) => {
       return pageToPostTransformer(res);
     });
-  }
-);
+};
 
-export const getSinglePost = cache(
-  async (slug: string, locale: string): Promise<Post> => {
+export const getSinglePost = async (slug: string, locale: string): Promise<Post> => {
     const databaseId = process.env.NOTION_POST_DATABASE_ID;
     if (!databaseId) {
       throw new Error('NOTION_POST_DATABASE_ID environment variable is not set');
@@ -79,16 +75,14 @@ export const getSinglePost = cache(
       post,
       markdown: markdown,
     };
-  }
-);
+};
 
 export interface FooterLink {
   name: string;
   url: string;
 }
 
-export const getHomePageContent = cache(
-  async (): Promise<{ title: string | undefined; markdown: string | undefined; footerLinks?: FooterLink[] }> => {
+export const getHomePageContent = async (): Promise<{ title: string | undefined; markdown: string | undefined; footerLinks?: FooterLink[] }> => {
     const pageId = process.env.NOTION_HOME_DATA_ID;
     if (!pageId) {
       console.warn('NOTION_HOME_DATA_ID environment variable is not set');
@@ -117,8 +111,7 @@ export const getHomePageContent = cache(
         markdown: '*There was an error loading the home page content.*',
       };
     }
-  }
-);
+};
 
 function processMarkdownAndFooterLinks(markdown: string): { 
   cleanedMarkdown: string; 
