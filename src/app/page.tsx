@@ -7,6 +7,8 @@ import { MDXContent } from './mdx-content';
 import { serialize } from 'next-mdx-remote/serialize';
 import remarkGfm from 'remark-gfm';
 
+export const revalidate = 10; // Revalidate every 10 seconds (for testing)
+
 async function getPosts(locale: string) {
     try {
         const posts = await getPublishedPosts(locale);
@@ -18,7 +20,9 @@ async function getPosts(locale: string) {
 }
 
 export default async function Home() {
-    const posts = await getPosts('en');
+    // Preload posts for fetch cache
+    void getPosts('en');
+
     let { title, markdown } = await getHomePageContent().catch(() => ({
         title: undefined,
         markdown: undefined
@@ -40,6 +44,8 @@ export default async function Home() {
         },
         parseFrontmatter: false
     });
+
+    const posts = await getPosts('en');
 
     return (
         <div className="max-w-3xl mx-auto px-4 py-8">
