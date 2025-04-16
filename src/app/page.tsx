@@ -54,7 +54,7 @@ export default async function Home() {
                         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between">
                             <Link
                                 href={`/post/${post.slug}`}
-                                className="text-lg font-medium text-gray-900 dark:text-zinc-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                                className="text-lg font-medium text-gray-900 dark:text-zinc-100 hover:text-green-600 dark:hover:text-green-400 transition-colors"
                                 prefetch={true}
                             >
                                 {post.title}
