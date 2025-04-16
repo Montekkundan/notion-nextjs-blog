@@ -73,6 +73,8 @@ export async function generateMetadata(props: Props) {
   };
 }
 
+export const revalidate = 10; // Revalidate every 10 seconds (for testing)
+
 export default async function PostPage(props: Props) {
   const params = await props.params;
   
