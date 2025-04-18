@@ -2,20 +2,22 @@
 
 A minimal, performance-optimized blog built with Next.js, TypeScript, and Notion as a CMS.
 
+![Image](/public/assets/pic.jpg)
+
 ## Features
 
-- ✨ Minimal and beautiful design with date formatting
-- 🚀 Excellent Lighthouse performance scores
-- 📝 MDX rendering with next-mdx-remote
-- 🔄 View transitions for smooth page navigation
-- 💾 Notion as a headless CMS
-- 🌙 Dark mode support
-- 🔍 SEO optimized with OpenGraph tags
-- ⚡ Static Site Generation with Incremental Static Regeneration
-- 🗃️ React cache for efficient data fetching
-- 🖼️ Optimized image loading with Next.js Image
-- 🔄 Prefetching for faster navigation
-- 🖊️ Syntax highlighting with Sugar High
+- Minimal and beautiful design with date formatting
+- Excellent Lighthouse performance scores
+- MDX rendering with next-mdx-remote
+- View transitions for smooth page navigation
+- Notion as a headless CMS
+- Dark mode support
+- SEO optimized with OpenGraph tags
+- Static Site Generation with Incremental Static Regeneration
+- React cache for efficient data fetching
+- Optimized image loading with Next.js Image
+- Prefetching for faster navigation
+- Syntax highlighting with Sugar High
 
 ## Getting Started
 
@@ -29,6 +31,10 @@ A minimal, performance-optimized blog built with Next.js, TypeScript, and Notion
    - Create a new Notion database for your blog posts
    - Share the database with your integration
    - Copy the database ID from the URL: `https://www.notion.so/{workspace}/{database_id}?v={view_id}`
+
+   ```note
+   you may not have the {workspace} part in the URL, but you will have the {database_id} and {view_id}
+   ```
 
 3. **Environment Variables**:
    - Create a `.env` file in the root directory
@@ -77,7 +83,11 @@ Your Notion database should have the following properties for each post:
 - `SEO title` (rich text): Custom SEO title
 - `Meta Description` (rich text): Custom meta description
 
+![Notion Database Example](/public/assets/notion_page.png)
+
 ### How the Notion Integration Works
+
+created by [souvikinator](https://x.com/souvikinator)
 
 This blog uses the `notion-to-md` package (v4) which has a plugin-based architecture:
 
@@ -166,6 +176,7 @@ This blog includes several performance optimizations:
 
 This blog uses Tailwind CSS for styling. You can customize the design by editing the CSS classes in the components.
 
+Design is inspired by [Lee Robinson's website](https://x.com/leerob)
 ### MDX Components
 
 You can customize how Markdown elements are rendered by editing the `mdx-components.tsx` file. The blog comes with pre-configured components for:
@@ -187,6 +198,8 @@ The easiest way to deploy this blog is using [Vercel](https://vercel.com/new):
 3. Add your environment variables
 4. Deploy!
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMontekkundan%2Fnotion-nextjs-blog&env=NOTION_ACCESS_TOKEN,NOTION_POST_DATABASE_ID&envDescription=Set%20NOTION_ACCESS_TOKEN%20(your%20Notion%20integration%20API%20key)%20and%20NOTION_POST_DATABASE_ID%20(your%20Notion%20database%20ID)%3B%20see%20Notion%20API%20docs%20for%20details.&envLink=https%3A%2F%2Fdevelopers.notion.com%2Fdocs%2Fgetting-started)
+
 ## Learn More
 
 To learn more about the technologies used in this project:
@@ -196,6 +209,7 @@ To learn more about the technologies used in this project:
 - [notion-to-md Documentation](https://github.com/souvikinator/notion-to-md)
 - [Next.js MDX Documentation](https://nextjs.org/docs/app/building-your-application/configuring/mdx)
 - [next-mdx-remote Documentation](https://github.com/hashicorp/next-mdx-remote)
+- [nextjs-isr Documentation](https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 
 ## License
